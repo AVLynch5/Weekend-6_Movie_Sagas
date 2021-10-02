@@ -47,9 +47,9 @@ function AddMovie() {
                 <input required placeholder="Movie Title" type="text" value={newMovie.title} onChange={(event) => setNewMovie({...newMovie, title: event.target.value})} />
                 <input required placeholder="Poster URL" type="text" value={newMovie.poster} onChange={(event) => setNewMovie({...newMovie, poster: event.target.value})} />
                 <input required placeholder="Movie Description" type="text" value={newMovie.description} onChange={(event) => setNewMovie({...newMovie, description: event.target.value})}/>
-                <select required name="genresDropdown" label="Select Genres">
+                <select required name="genresDropdown" label="Select Genres" onChange={(event) => setNewMovie({...newMovie, genres: [...newMovie.genres, event.target.value]})}>
                     {genreList.map((genre) => {
-                        return(<option key={genre.id} value={genre.id} onClick={(event) => setNewMovie({...newMovie, genres: [...newMovie.genres, event.target.value]})}>{genre.name}</option>);
+                        return(<option key={genre.id} value={genre.id}>{genre.name}</option>);
                     })}
                 </select>
                 <button onClick={handleBack}>Back</button>
