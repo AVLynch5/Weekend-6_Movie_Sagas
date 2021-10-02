@@ -24,7 +24,7 @@ function AddMovie() {
 
     //function handleBack - clear inputs and return user to home
     const handleBack = () => {
-        setNewMovie({title: '', poster: '', description: '', genres: []});
+        //setNewMovie({title: '', poster: '', description: '', genres: []});
         history.push("/");
     }
 
@@ -33,7 +33,7 @@ function AddMovie() {
         //prevent default form behavior
         event.preventDefault();
         dispatch({type: 'ADD_NEW_MOVIE', payload: newMovie});
-        setNewMovie({title: '', poster: '', description: '', genres: []});
+        //setNewMovie({title: '', poster: '', description: '', genres: []});
         history.push("/");
     }
 
