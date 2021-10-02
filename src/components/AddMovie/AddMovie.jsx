@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function AddMovie() {
     const dispatch = useDispatch();
+    const genreList = useSelector(store => store.genres);
 
     //on page load, call getGenres to populate genresReducer
     useEffect(() => {
@@ -17,6 +19,7 @@ function AddMovie() {
 
     return(
         <>
+            {JSON.stringify(genreList)}
         </>
     );
 }
