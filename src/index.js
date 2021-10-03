@@ -16,6 +16,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('GET_GENRES', fetchAllGenres);
     yield takeEvery('ADD_NEW_MOVIE', postNewMovie);
+    yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails)
 }
 
 function* fetchAllMovies() {
@@ -55,6 +56,18 @@ function* postNewMovie(action) {
     } 
 }
 
+function* fetchMovieDetails(action) {
+    // get specific movie details from the DB
+    try {
+        //action.payload is movieID
+        const movieGetDeets = yield axios.get(`/api/movie/${action.payload}`);
+        console.log('Movie details:', movieGetDeets.data);
+        yield put({ type: 'SET_MOVIE_DETAILS', payload: movieGetDeets.data });
+    } catch(error) {
+        console.log('Error getting movie getails', error);
+    } 
+}
+
 // Create sagaMiddleware
 const sagaMiddleware = createSagaMiddleware();
 
@@ -73,6 +86,18 @@ const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
             return action.payload;
+        default:
+            return state;
+    }
+}
+
+//reducer to store details for a specfic movie
+const movieDeets = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_MOVIE_DETAILS':
+            return action.payload;
+        case 'CLEAR_MOVIE_DETAILS':
+            return [];
         default:
             return state;
     }
