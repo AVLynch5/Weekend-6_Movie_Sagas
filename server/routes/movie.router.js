@@ -36,8 +36,10 @@ router.post('/', (req, res) => {
       INSERT INTO "movies_genres" ("movie_id", "genre_id")
       VALUES  ($1, $2);
       `
+    //need to post each genre id in newMovie.genres array - for loop
+    for (let genreID of req.body.genres) {
       // SECOND QUERY ADDS GENRE FOR THAT NEW MOVIE
-      pool.query(insertMovieGenreQuery, [createdMovieId, req.body.genre_id]).then(result => {
+      pool.query(insertMovieGenreQuery, [createdMovieId, genreID]).then(result => {
         //Now that both are done, send back success!
         res.sendStatus(201);
       }).catch(err => {
@@ -45,6 +47,7 @@ router.post('/', (req, res) => {
         console.log(err);
         res.sendStatus(500)
       })
+    }
 
 // Catch for first query
   }).catch(err => {
