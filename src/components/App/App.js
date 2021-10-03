@@ -1,4 +1,4 @@
-import {HashRouter as Router, Route} from 'react-router-dom';
+import {HashRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import MovieList from '../MovieList/MovieList'
 import AddMovie from '../AddMovie/AddMovie';
@@ -13,9 +13,9 @@ function App() {
           <MovieList />
         </Route>
         {/* Details page */}
-        <Route path="/details">
+        <Switch path="/details/:id">
           <Details />
-        </Route>
+        </Switch>
         {/* Add Movie page */}
         <Route path="/addmovie">
           <AddMovie />
