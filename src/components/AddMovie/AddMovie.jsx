@@ -32,9 +32,15 @@ function AddMovie() {
     const addNewMovie = (event) => {
         //prevent default form behavior
         event.preventDefault();
-        dispatch({type: 'ADD_NEW_MOVIE', payload: newMovie});
-        //setNewMovie({title: '', poster: '', description: '', genres: []});
-        history.push("/");
+        //validation - user must select at least one genre
+        if (newMovie.genres.length != 0) {
+            dispatch({type: 'ADD_NEW_MOVIE', payload: newMovie});
+            //setNewMovie({title: '', poster: '', description: '', genres: []});
+            history.push("/");
+        } else {
+            alert('Please select at least one genre');
+            return;
+        }
     }
 
     return(
