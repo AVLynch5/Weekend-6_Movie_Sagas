@@ -11,6 +11,12 @@ function MovieList() {
         dispatch({ type: 'FETCH_MOVIES' });
     }, []);
 
+    //function goToDetails - called on image click. Takes movieID as input param. Calls dispatch and sends movieID as payload.
+    const goToDetails = (movieID) => {
+        dispatch({type: 'FETCH_MOVIE_DETAILS', payload: movieID});
+        //console.log('The movieID is', movieID);//test
+    }
+
     return (
         <main>
             <h1>MovieList</h1>
@@ -19,7 +25,7 @@ function MovieList() {
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
+                            <img src={movie.poster} alt={movie.title} onClick={() => goToDetails(movie.id)}/>
                         </div>
                     );
                 })}
