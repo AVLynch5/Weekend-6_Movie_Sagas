@@ -43,7 +43,16 @@ function* fetchAllGenres() {
 }
 
 function* postNewMovie(action) {
-    
+    //POST new movie object to the DB
+    try {
+        //newMovie is the object from AddMovie.jsx
+        const newMovie = action.payload;
+        yield axios.post('/api/movie', newMovie);
+        //dispatch action to call GET function
+        yield put({type: 'FETCH_MOVIES'});
+    } catch(error) {
+        console.log('POST new movie error', error);
+    } 
 }
 
 // Create sagaMiddleware
