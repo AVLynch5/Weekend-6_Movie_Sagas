@@ -15,6 +15,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('GET_GENRES', fetchAllGenres);
+    yield takeEvery('ADD_NEW_MOVIE', postNewMovie);
 }
 
 function* fetchAllMovies() {
@@ -39,6 +40,10 @@ function* fetchAllGenres() {
     } catch(error) {
         console.log('Error GETting genres', error);
     }
+}
+
+function* postNewMovie(action) {
+    
 }
 
 // Create sagaMiddleware
