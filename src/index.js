@@ -108,6 +108,7 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
+        movieDeets,
     }),
     // Add sagaMiddleware to our store
     applyMiddleware(sagaMiddleware, logger),
