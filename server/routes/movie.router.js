@@ -56,4 +56,27 @@ router.post('/', (req, res) => {
   })
 })
 
+router.get('/:id', (req, res) => {
+  //get movieID from url
+  const movieID = req.params.id;
+  const queryText = 
+    `SELECT * FROM
+    (SELECT "movies"."id", "movies"."title", "movies"."poster", "movies"."description", json_agg("genres"."name")
+    FROM "movies"
+    INNER JOIN "movies_genres" 
+    ON "movies"."id" = "movies_genres"."movie_id"
+    INNER JOIN "genres"
+    ON "genres"."id" = "movies_genres"."genre_id"
+    GROUP BY "movies"."id", "movies"."title", "movies"."poster", "movies"."description") AS "displayTable"
+    WHERE "id" = $1;`;
+  pool.query(queryText, [movieID])
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log('ERROR: Get movie details', error);
+      res.sendStatus(500)
+    })
+});
+
 module.exports = router;
