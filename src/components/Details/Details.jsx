@@ -20,10 +20,19 @@ function Details({}) {
         dispatch({type: 'FETCH_MOVIE_DETAILS', payload: movieid});
     }
 
-    //array containing movie obj
-    const movieToShowArr = useSelector(store => store.movieDeets);
-    //movie obj
-    const movieToShow = movieToShowArr[0];
+    //function to turn movieToShow.join_agg array -> string
+    const arrayToString = () => {
+        //to solve page load issue - if movieToShow obj undefined (DOM loaded before reducer available), do nothing. But why movieToShow.title/description alreay available?
+        if (movieToShow.json_agg == undefined) {
+            return;
+        }
+        //stringify json.agg array for display
+        let genreString = movieToShow.json_agg.join(', ');
+        return genreString;
+    }
+
+    //object containing movie details.
+    const movieToShow = useSelector(store => store.movieDeets);
 
     //handle backToHome
     const handleHome = () => {
@@ -31,13 +40,15 @@ function Details({}) {
         dispatch({type: 'CLEAR_MOVIE_DETAILS'});
     }
 
+    //call instance of arrayToString. Prevents DOM load prior to reducer initializing and strinifies genres.
+    const genresToShow = arrayToString();
     return(
         <>
             <h3>Movie Details:</h3>
             {/*<p>{JSON.stringify(movieToShow)}</p>*/}
             <img src={movieToShow.poster} />
             <p>Movie Title: {movieToShow.title}</p>
-            <p>Movie Genres: {movieToShow.json_agg.join(', ')}</p>
+            <p>Movie Genres: {genresToShow}</p>
             <div className="descriptionBox">
                 <p>Movie Description: {movieToShow.description}</p>
             </div>

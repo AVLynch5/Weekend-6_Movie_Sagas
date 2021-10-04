@@ -62,7 +62,8 @@ function* fetchMovieDetails(action) {
         //action.payload is movieID
         const movieGetDeets = yield axios.get(`/api/movie/${action.payload}`);
         console.log('Movie details:', movieGetDeets.data);
-        yield put({ type: 'SET_MOVIE_DETAILS', payload: movieGetDeets.data });
+        //payload is an object containing movie details - title, poster url, description, genres
+        yield put({ type: 'SET_MOVIE_DETAILS', payload: movieGetDeets.data[0] });
     } catch(error) {
         console.log('Error getting movie getails', error);
     } 
