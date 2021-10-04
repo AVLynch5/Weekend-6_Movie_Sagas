@@ -3,6 +3,7 @@ import './App.css';
 import MovieList from '../MovieList/MovieList'
 import AddMovie from '../AddMovie/AddMovie';
 import Details from '../Details/Details';
+import { useParams } from 'react-router';
 
 function App() {
   return (
@@ -13,9 +14,9 @@ function App() {
           <MovieList />
         </Route>
         {/* Details page */}
-        <Switch path="/details/:id">
+        <Route path="/details/:movieid">
           <Details />
-        </Switch>
+        </Route>
         {/* Add Movie page */}
         <Route path="/addmovie">
           <AddMovie />

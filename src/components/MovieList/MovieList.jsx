@@ -14,9 +14,10 @@ function MovieList() {
 
     //function goToDetails - called on image click. Takes movieID as input param. Calls dispatch and sends movieID as payload.
     const goToDetails = (movieID) => {
-        dispatch({type: 'FETCH_MOVIE_DETAILS', payload: movieID});
+        //dispatch({type: 'FETCH_MOVIE_DETAILS', payload: movieID});
         //console.log('The movieID is', movieID);//test
-        history.push("/details");
+        //route user to details/:id page where id dynamically acquired using params
+        history.push(`/details/${movieID}`);
     }
 
     return (
