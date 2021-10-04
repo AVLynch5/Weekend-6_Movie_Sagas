@@ -8,9 +8,9 @@ function App() {
   return (
     <div className="App">
       <h1>The Movies Saga!</h1>
-      <Router>
-        <Link to="/addmovie">Add a Movie</Link>        
+      <Router>       
         <Route path="/" exact>
+          <Link to="/addmovie">Add a Movie</Link> 
           <MovieList />
         </Route>
         {/* Details page */}
