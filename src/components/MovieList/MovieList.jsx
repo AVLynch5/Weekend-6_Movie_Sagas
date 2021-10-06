@@ -17,11 +17,11 @@ function MovieList() {
             <Box>
                 <h2>Here's what's Showing:</h2>
             </Box>
-            <div className="movies">
+            <Grid container>
                 {movies.map(movie => {
-                    return (<MovieItem key={movie.id} movie={movie} />);
+                    return (<Grid item xl={3} lg={3} md={3} sm={6} xs={12}><MovieItem key={movie.id} movie={movie} /></Grid>);
                 })}
-            </div>
+            </Grid>
         </main>
 
     );
