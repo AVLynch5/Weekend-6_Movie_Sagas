@@ -1,4 +1,6 @@
 import { useHistory } from "react-router";
+import { Box } from "@material-ui/core";
+import './MovieItem.css';
 
 function MovieItem({movie}){
     const history = useHistory();
@@ -12,10 +14,13 @@ function MovieItem({movie}){
     }
     return(
         <>
-            <div key={movie.id} >
+            <Box className="moviePoster">
                 <h3>{movie.title}</h3>
-                <img src={movie.poster} alt={movie.title} onClick={() => goToDetails(movie.id)}/>
-            </div>
+                <div>
+                    <img src={movie.poster} alt={movie.title} onClick={() => goToDetails(movie.id)}/>
+                </div>
+            </Box>
+            
         </>
     );
 }

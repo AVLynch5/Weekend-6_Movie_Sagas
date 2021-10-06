@@ -10,7 +10,7 @@ import Header from '../Header/Header';
 function App() {
   return (
     <Container className="App" >
-      <Paper>
+      <Paper elevation={8}>
         <Header />
         <Router>       
           <Route path="/" exact>
