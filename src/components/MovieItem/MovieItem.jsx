@@ -17,7 +17,7 @@ function MovieItem({movie}){
             <Box className="moviePoster">
                 <h3>{movie.title}</h3>
                 <div>
-                    <img src={movie.poster} alt={movie.title} onClick={() => goToDetails(movie.id)}/>
+                    <img className="picture-sizing" src={movie.poster} alt={movie.title} onClick={() => goToDetails(movie.id)}/>
                 </div>
             </Box>
             
