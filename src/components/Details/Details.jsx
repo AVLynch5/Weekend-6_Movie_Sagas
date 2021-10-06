@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import {useParams} from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import './Details.css';
 
 function Details({}) {
     const history = useHistory();
@@ -46,7 +47,7 @@ function Details({}) {
         <>
             <h3>Movie Details:</h3>
             {/*<p>{JSON.stringify(movieToShow)}</p>*/}
-            <img src={movieToShow.poster} />
+            <img className="img-details-sizing" src={movieToShow.poster} />
             <p>Movie Title: {movieToShow.title}</p>
             <p>Movie Genres: {genresToShow}</p>
             <div className="descriptionBox">

@@ -1,0 +1,14 @@
+.img-details-sizing {
+    height: 350px;
+    width: auto;
+}
+
+.descriptionBox {
+    display: block;
+    margin: 0 auto;
+    width: 600px;
+}
+
+button {
+    margin-bottom: 1em;
+}
