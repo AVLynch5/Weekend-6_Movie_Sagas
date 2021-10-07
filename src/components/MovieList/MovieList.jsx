@@ -19,7 +19,7 @@ function MovieList() {
             </Box>
             <Grid container>
                 {movies.map(movie => {
-                    return (<Grid item xl={3} lg={3} md={3} sm={6} xs={12}><MovieItem key={movie.id} movie={movie} /></Grid>);
+                    return (<Grid item key={movie.id} xl={3} lg={3} md={3} sm={6} xs={12}><MovieItem movie={movie} /></Grid>);
                 })}
             </Grid>
         </main>
