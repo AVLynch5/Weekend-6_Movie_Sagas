@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useHistory } from "react-router";
-import { TextareaAutosize } from "@material-ui/core";
 
 function AddMovie() {
     const history = useHistory();
