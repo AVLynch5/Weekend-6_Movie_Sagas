@@ -10,11 +10,11 @@ import Header from '../Header/Header';
 function App() {
   return (
     <Container className="App" >
-      <Paper elevation={8}>
+      <Paper elevation={8} sx={{backgroundColor: 'white'}}>
         <Header />
         <Router>       
           <Route path="/" exact>
-            <Link to="/addmovie">Add a Movie</Link> 
+            <Link className="addMovieLink" to="/addmovie">Add a Movie</Link> 
             <MovieList />
           </Route>
           {/* Details page */}

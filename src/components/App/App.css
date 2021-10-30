@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  background-color: rgb(224, 46, 27, 0.5);
+  margin-bottom: 1.5em;
+  padding-top: 0.1em;
 }
 
 
@@ -16,6 +19,11 @@
 
 .App-intro {
   font-size: large;
+}
+
+.addMovieLink {
+  border: 3px dashed rgb(224, 46, 27, 1);
+  padding: 0.3em;
 }
 
 @keyframes App-logo-spin {

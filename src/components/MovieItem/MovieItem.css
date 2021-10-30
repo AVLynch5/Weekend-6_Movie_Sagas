@@ -1,9 +1,11 @@
 .moviePoster {
     margin: 9px;
+    border: 5px solid #E02E1B;
 }
 
 h3 {
     margin-bottom: 0.2em;
+    margin-top: 0.5em;
 }
 
 .picture-sizing {
