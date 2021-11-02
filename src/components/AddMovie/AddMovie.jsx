@@ -5,7 +5,9 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 import {TextField} from '@material-ui/core';
 import {Select} from '@material-ui/core';
-
+import {InputLabel} from '@material-ui/core';
+import {FormControl} from '@material-ui/core';
+ 
 function AddMovie() {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -33,10 +35,6 @@ function AddMovie() {
     //function checkGenreArray - function to check newMovie.genres for prior instance of genreID. Prevents duplicate entries.
     const checkGenreArray = (event) => {
         const idToCheck = event.target.value;
-        //if user tries to select initial menu as genre, do not add to genre array
-        if (idToCheck == 'MENU') {
-            return;
-        }
         //if idToCheck exists within newMovie.genres, do not add to genre array
         for (let id of newMovie.genres) {
             if (id == idToCheck) {
@@ -44,7 +42,7 @@ function AddMovie() {
             }
         }
         //add genre id to newMovie genres array
-        setNewMovie({...newMovie, genres: [...newMovie.genres, event.target.value]})
+        setNewMovie({...newMovie, genres: typeof event.target.value === 'string' ? event.target.value.split(',') : event.target.value});
     }
 
     //function addNewMovie - dispatch to call POST, clear inputs, return user to home
@@ -66,7 +64,7 @@ function AddMovie() {
         <>
             {/*JSON.stringify(genreList)*/}
             {/*<br/>*/}
-            {/*JSON.stringify(newMovie)*/}
+            {JSON.stringify(newMovie)}
             <h3>Add a new movie:</h3>
             <form onSubmit={addNewMovie}>
                 <TextField required placeholder="Movie Title" type="text" value={newMovie.title} onChange={(event) => setNewMovie({...newMovie, title: event.target.value})} />
@@ -74,12 +72,14 @@ function AddMovie() {
                 <br/>
                 <TextField multiline rows={5} rowsMax={12} required placeholder="Movie Description" type="text" value={newMovie.description} onChange={(event) => setNewMovie({...newMovie, description: event.target.value})}/>
                 <br/>
-                <Select required name="genresDropdown" label="Select Genres" onChange={(event) => checkGenreArray(event)}>
-                    <option value='MENU'>Menu</option>
-                    {genreList.map((genre) => {
-                        return(<option key={genre.id} value={genre.id}>{genre.name}</option>);
-                    })}
-                </Select>
+                <FormControl>
+                    <InputLabel id="genre-dropdown">Genres</InputLabel>
+                    <Select labelId="genre-dropdown" required multiple value={newMovie.genres} name="genresDropdown" label="Select Genres" onChange={(event) => checkGenreArray(event)}>
+                        {genreList.map((genre) => {
+                            return(<option key={genre.id} value={genre.id}>{genre.name}</option>);
+                        })}
+                    </Select>
+                </FormControl>
                 <br/>
                 <button onClick={handleBack}>Back</button>
                 <button type="submit">Save</button>
