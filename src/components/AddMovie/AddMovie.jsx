@@ -7,8 +7,20 @@ import {TextField} from '@material-ui/core';
 import {Select} from '@material-ui/core';
 import {InputLabel} from '@material-ui/core';
 import {FormControl} from '@material-ui/core';
+//needed to style dropdown
+import {makeStyles} from '@material-ui/core';
+
+//function to use makeStyles and access theme styling
+const useStyles = makeStyles(theme => ({
+    FormControl: {
+        minWidth: 100,
+    }
+}))
  
 function AddMovie() {
+    //to apply styles
+    const classes = useStyles();
+
     const history = useHistory();
     const dispatch = useDispatch();
     const genreList = useSelector(store => store.genres);
@@ -72,9 +84,9 @@ function AddMovie() {
                 <br/>
                 <TextField multiline rows={5} rowsMax={12} required placeholder="Movie Description" type="text" value={newMovie.description} onChange={(event) => setNewMovie({...newMovie, description: event.target.value})}/>
                 <br/>
-                <FormControl>
-                    <InputLabel id="genre-dropdown">Genres</InputLabel>
-                    <Select labelId="genre-dropdown" required multiple value={newMovie.genres} name="genresDropdown" label="Select Genres" onChange={(event) => checkGenreArray(event)}>
+                <FormControl className={classes.FormControl}>
+                    <InputLabel id="genre-dropdown-label">Genres</InputLabel>
+                    <Select labelId="genre-dropdown-label" id="genre-dropdown" required multiple value={newMovie.genres} name="genresDropdown" label="Select Genres" onChange={(event) => checkGenreArray(event)}>
                         {genreList.map((genre) => {
                             return(<option key={genre.id} value={genre.id}>{genre.name}</option>);
                         })}
