@@ -9,12 +9,13 @@ import {InputLabel} from '@material-ui/core';
 import {FormControl} from '@material-ui/core';
 //needed to style dropdown
 import {makeStyles} from '@material-ui/core';
+import {MenuItem,} from '@material-ui/core';
 
 //function to use makeStyles and access theme styling
 const useStyles = makeStyles(theme => ({
     FormControl: {
-        minWidth: 100,
-    }
+        width: 150,
+    },
 }))
  
 function AddMovie() {
@@ -47,12 +48,7 @@ function AddMovie() {
     //function checkGenreArray - function to check newMovie.genres for prior instance of genreID. Prevents duplicate entries.
     const checkGenreArray = (event) => {
         const idToCheck = event.target.value;
-        //if idToCheck exists within newMovie.genres, do not add to genre array
-        for (let id of newMovie.genres) {
-            if (id == idToCheck) {
-                return;
-            }
-        }
+        alert(event.target.value);
         //add genre id to newMovie genres array
         setNewMovie({...newMovie, genres: typeof event.target.value === 'string' ? event.target.value.split(',') : event.target.value});
     }
@@ -86,9 +82,35 @@ function AddMovie() {
                 <br/>
                 <FormControl className={classes.FormControl}>
                     <InputLabel id="genre-dropdown-label">Genres</InputLabel>
-                    <Select labelId="genre-dropdown-label" id="genre-dropdown" required multiple value={newMovie.genres} name="genresDropdown" label="Select Genres" onChange={(event) => checkGenreArray(event)}>
+                    <Select 
+                        labelId="genre-dropdown-label" 
+                        id="genre-dropdown" 
+                        required 
+                        multiple 
+                        value={newMovie.genres} 
+                        name="genresDropdown" 
+                        label="Select Genres" 
+                        onChange={(event) => checkGenreArray(event)} 
+                        MenuProps={{
+                            anchorOrigin: {
+                                vertical: "bottom",
+                                horizontal: "left"
+                            },
+                            transformOrigin: {
+                                vertical: "top",
+                                horizontal: "left"
+                            },
+                            getContentAnchorEl: null,
+                            PaperProps: {
+                                style: {
+                                    maxHeight: 150,
+                                }
+                            }
+                    }}>
                         {genreList.map((genre) => {
-                            return(<option key={genre.id} value={genre.id}>{genre.name}</option>);
+                            return(<MenuItem key={genre.id} value={genre.id}>
+                                {genre.name}
+                                </MenuItem>);
                         })}
                     </Select>
                 </FormControl>
