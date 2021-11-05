@@ -9,13 +9,19 @@ import {InputLabel} from '@material-ui/core';
 import {FormControl} from '@material-ui/core';
 //needed to style dropdown
 import {makeStyles} from '@material-ui/core';
-import {MenuItem,} from '@material-ui/core';
+import {MenuItem} from '@material-ui/core';
+//import css
+import './AddMovie.css';
 
 //function to use makeStyles and access theme styling
 const useStyles = makeStyles(theme => ({
     FormControl: {
         width: 150,
+        marginTop: '8px'
     },
+    TextfieldControl: {
+        margin: '8px'
+    }
 }))
  
 function AddMovie() {
@@ -45,11 +51,11 @@ function AddMovie() {
         history.push("/");
     }
 
-    //function checkGenreArray - function to check newMovie.genres for prior instance of genreID. Prevents duplicate entries.
+    //function checkGenreArray
     const checkGenreArray = (event) => {
-        const idToCheck = event.target.value;
-        alert(event.target.value);
-        //add genre id to newMovie genres array
+        //const idToCheck = event.target.value;
+        //alert(idToCheck);//Check idToCheck
+        //replace newMovie genres array w/ new array of genre ids
         setNewMovie({...newMovie, genres: typeof event.target.value === 'string' ? event.target.value.split(',') : event.target.value});
     }
 
@@ -72,15 +78,15 @@ function AddMovie() {
         <>
             {/*JSON.stringify(genreList)*/}
             {/*<br/>*/}
-            {JSON.stringify(newMovie)}
+            {/* JSON.stringify(newMovie) */}
             <h3>Add a new movie:</h3>
-            <form onSubmit={addNewMovie}>
-                <TextField required placeholder="Movie Title" type="text" value={newMovie.title} onChange={(event) => setNewMovie({...newMovie, title: event.target.value})} />
-                <TextField required placeholder="Poster URL" type="text" value={newMovie.poster} onChange={(event) => setNewMovie({...newMovie, poster: event.target.value})} />
+            <form className="form-box" onSubmit={addNewMovie}>
+                <TextField className={classes.TextfieldControl} required placeholder="Movie Title" type="text" value={newMovie.title} onChange={(event) => setNewMovie({...newMovie, title: event.target.value})} variant="outlined"/>
+                <TextField className={classes.TextfieldControl} required placeholder="Poster URL" type="text" value={newMovie.poster} onChange={(event) => setNewMovie({...newMovie, poster: event.target.value})} variant="outlined"/>
                 <br/>
-                <TextField multiline rows={5} rowsMax={12} required placeholder="Movie Description" type="text" value={newMovie.description} onChange={(event) => setNewMovie({...newMovie, description: event.target.value})}/>
+                <TextField className={classes.TextfieldControl} multiline rows={5} rowsMax={12} required placeholder="Movie Description" type="text" value={newMovie.description} onChange={(event) => setNewMovie({...newMovie, description: event.target.value})} variant="outlined"/>
                 <br/>
-                <FormControl className={classes.FormControl}>
+                <FormControl className={classes.FormControl} variant="outlined">
                     <InputLabel id="genre-dropdown-label">Genres</InputLabel>
                     <Select 
                         labelId="genre-dropdown-label" 

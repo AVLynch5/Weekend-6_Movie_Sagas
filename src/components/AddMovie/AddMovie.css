@@ -1,0 +1,15 @@
+.form-box {
+    border: 5px solid #E02E1B;
+    padding: 1em;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+button {
+    margin-top: 1.25em;
+    margin-bottom: 0em;
+    margin-left: 0.35em;
+    margin-right: 0.35em;
+}
