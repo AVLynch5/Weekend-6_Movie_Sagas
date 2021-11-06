@@ -8,9 +8,7 @@
 .descriptionBox {
     display: block;
     margin: 0 auto;
-    width: 600px;
-}
-
-button {
-    margin-bottom: 1em;
+    max-width: 600px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
