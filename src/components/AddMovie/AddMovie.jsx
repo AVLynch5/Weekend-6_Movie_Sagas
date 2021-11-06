@@ -81,10 +81,10 @@ function AddMovie() {
             {/* JSON.stringify(newMovie) */}
             <h3>Add a new movie:</h3>
             <form className="form-box" onSubmit={addNewMovie}>
-                <TextField className={classes.TextfieldControl} required placeholder="Movie Title" type="text" value={newMovie.title} onChange={(event) => setNewMovie({...newMovie, title: event.target.value})} variant="outlined"/>
-                <TextField className={classes.TextfieldControl} required placeholder="Poster URL" type="text" value={newMovie.poster} onChange={(event) => setNewMovie({...newMovie, poster: event.target.value})} variant="outlined"/>
+                <TextField className={classes.TextfieldControl} required label="Movie Title" type="text" value={newMovie.title} onChange={(event) => setNewMovie({...newMovie, title: event.target.value})} variant="outlined"/>
+                <TextField className={classes.TextfieldControl} required label="Poster URL" type="text" value={newMovie.poster} onChange={(event) => setNewMovie({...newMovie, poster: event.target.value})} variant="outlined"/>
                 <br/>
-                <TextField className={classes.TextfieldControl} multiline rows={5} rowsMax={12} required placeholder="Movie Description" type="text" value={newMovie.description} onChange={(event) => setNewMovie({...newMovie, description: event.target.value})} variant="outlined"/>
+                <TextField className={classes.TextfieldControl} multiline rows={5} rowsMax={12} required label="Movie Description" type="text" value={newMovie.description} onChange={(event) => setNewMovie({...newMovie, description: event.target.value})} variant="outlined"/>
                 <br/>
                 <FormControl className={classes.FormControl} variant="outlined">
                     <InputLabel id="genre-dropdown-label">Genres</InputLabel>
