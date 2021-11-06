@@ -34,6 +34,7 @@ Do you remember going to the movie theater and just standing outside the buildin
 2. Details page - Add button to Edit a movie item
 3. Details page - Add dropdown to (optionally) label movies as "watched" or "to watch". Color label and display on movie detail page below image. On home/list page, if label selected, change border color to match label color.
 4. List/home page - add search field to search movies by genre
+5. Deploy application to Heroku
 
 ## Acknowledgements
 Many thanks to the great folx at [Prime Digial Academy](www.primeacademy.io) for making this possible.
