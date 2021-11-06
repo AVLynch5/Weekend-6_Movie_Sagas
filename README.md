@@ -14,7 +14,7 @@ Do you remember going to the movie theater and just standing outside the buildin
 - Fork and Clone this repository
 - Create a new database called 'saga_movies_weekend'. 
 - Copy the SQL query code from 'database.sql' and run it to create (and populate) the database tables.
-* Note - the user can populate the "movies" table as desired. Additional genres can be added to the "genres" table.
+*  ##_Note - the user can populate the "movies" table as desired. Additional genres can be added to the "genres" table._
 - In terminal, run 'npm install' to download and install all required project dependencies.
 - In terminal, run 'npm run server' to start the project server.
 - In a separate terminal window, run 'npm run client' to start the project client.
