@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import './Details.css';
+import { Button } from '@material-ui/core';
 
 function Details({}) {
     const history = useHistory();
@@ -53,7 +54,7 @@ function Details({}) {
             <div className="descriptionBox">
                 <p>Movie Description: {movieToShow.description}</p>
             </div>
-            <button onClick={handleHome}>Back to List</button>
+            <Button variant="outlined" onClick={handleHome}>Back to List</Button>
         </>
     );
 }

@@ -6,6 +6,7 @@ import Details from '../Details/Details';
 import { Container } from '@material-ui/core';
 import { Paper } from '@material-ui/core';
 import Header from '../Header/Header';
+import { Button } from '@material-ui/core';
 
 function App() {
   return (
@@ -14,7 +15,9 @@ function App() {
         <Header />
         <Router>       
           <Route path="/" exact>
-            <Link className="addMovieLink" to="/addmovie">Add a Movie</Link> 
+            <Link className="addMovieLink" to="/addmovie">
+              <Button>Add a Movie</Button>
+            </Link> 
             <MovieList />
           </Route>
           {/* Details page */}

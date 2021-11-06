@@ -10,6 +10,7 @@ import {FormControl} from '@material-ui/core';
 //needed to style dropdown
 import {makeStyles} from '@material-ui/core';
 import {MenuItem} from '@material-ui/core';
+import { Button } from '@material-ui/core';
 //import css
 import './AddMovie.css';
 
@@ -17,7 +18,8 @@ import './AddMovie.css';
 const useStyles = makeStyles(theme => ({
     FormControl: {
         width: 150,
-        marginTop: '8px'
+        marginTop: '8px',
+        marginBottom: '8px',
     },
     TextfieldControl: {
         margin: '8px'
@@ -121,8 +123,8 @@ function AddMovie() {
                     </Select>
                 </FormControl>
                 <br/>
-                <button onClick={handleBack}>Back</button>
-                <button type="submit">Save</button>
+                <Button className={classes.TextfieldControl} variant="outlined" onClick={handleBack}>Back</Button>
+                <Button className={classes.TextfieldControl} variant="contained" type="submit">Save</Button>
             </form>
         </>
     );
